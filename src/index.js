@@ -1,9 +1,7 @@
 module.exports = function toReadable (number) {
   
-  const first_19th = ["", "one", "two", "three", "four", "five",
-                        "six", "seven", "eight", "nine", "ten", "eleven",
-                        "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
-                         "eighteen", "nineteen"];
+  const first_19th = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven",
+                        "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
    const  tensWords = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
 
   let first = null;
@@ -15,7 +13,6 @@ module.exports = function toReadable (number) {
   if (number === 0) {
     return "zero";
   }
-//filtr
   if (number < 20 || (number > 100 && (number%100 < 20) && number%100 !== 0)) {
     secondTill19 = number;
     if (Math.floor(number/100)>0) {
@@ -26,15 +23,7 @@ module.exports = function toReadable (number) {
     }
     else return first_19th[number];
 
-  } else if (number%10 === 0 && number < 100) {
-    second = number/10;
-    return tensWords[second];
-
-  } else if (number%100 === 0 && number >= 100) {
-    first = Math.floor(number/100);
-    return first_19th[first] + " hundred";
-
-  } else {
+  }  else {
     first = (Math.floor(number/100) > 0) ? Math.floor(number/100) : 0;
     second = (Math.floor(number/10%10) > 1 ) ? Math.floor(number/10%10) : 0;
     third = (Math.floor(number%10)) > 0 ? Math.floor(number%10) : 0;
